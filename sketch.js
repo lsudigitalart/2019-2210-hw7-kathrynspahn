@@ -9,7 +9,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 600);
+  createCanvas(900, 700);
 
   if (clones.isLoaded()) {
     loadTime = millis();
@@ -17,13 +17,15 @@ function setup() {
     clones.play();
   }
 
+
+
   amp = new p5.Amplitude();
   fft = new p5.FFT();
 }
 
 
 function draw() {
-  background(255);
+  background(200,80,200,60);
   noStroke();
   playTime = millis() - loadTime;
   // print(playTime);
@@ -34,7 +36,7 @@ function draw() {
 
   cSize = map(level, 0, 1, 0, width);
 
-  let lerping = lerpColor(color("orange"), color("green"), level)
+  let lerping = lerpColor(color("purple"), color("green"), level)
   // fill(lerping);
 
 
@@ -42,15 +44,10 @@ function draw() {
   if (playTime > 6000) {
     for (var i = 0; i < width; i++) {
       // grad1 = lerpColor(color("purple"), color("yellow"), map(i, 0, width, 0, 1));
-      grad1 = lerpColor(color("purple"), color("yellow"), level);
-      stroke(grad1);
+      grad1 = lerpColor(color("purple"), color("green"), level);
       line(i, 0, i, height);
     }
   }
-
-  fill(0);
-  // background(mappedColor);
-  circle(width / 2, height / 2, cSize);
 
   var spectrum = fft.analyze();
   var trebleVol = fft.getEnergy("treble");
@@ -58,10 +55,14 @@ function draw() {
   var bassVol = fft.getEnergy("bass");
 
 
-  fill(255);
-  circle(200,100, trebleVol);
-  circle(400,300, midVol);
-  circle(600, 500, bassVol);
+  stroke(10);
 
+  fill(255,40,30,40);
+  circle(200,100, trebleVol * 2);
+  circle(400,300, midVol * 2);
+  circle(600, 500, bassVol * 2);
+
+
+  
 
 }
