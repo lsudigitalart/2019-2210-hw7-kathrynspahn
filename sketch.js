@@ -10,6 +10,7 @@ function preload() {
 
 function setup() {
   createCanvas(900, 700);
+  userStartAudio();
 
   if (clones.isLoaded()) {
     loadTime = millis();
