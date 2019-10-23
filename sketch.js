@@ -13,6 +13,7 @@ function setup() {
   userStartAudio();
   background(200,80,200);
 
+
   if (clones.isLoaded()) {
     loadTime = millis();
     print(loadTime);
@@ -40,6 +41,23 @@ function draw() {
   var bassVol = fft.getEnergy("bass");
 
 
+
+  fill(0,50,50);
+  noStroke();
+  for (var x = trebleVol; x < width; x=x+200) {
+    fill(0,0,100,50)
+    circle(x,200,x,100);
+    fill(0,100,50,50)
+    circle(x, 400, x, 300);
+    fill(100,0,200,50)
+    circle(x,600,x,500);
+    fill(50,200,0,50)
+    circle(x,800,x,700);
+   }
+ 
+
+
+
   stroke(10+ trebleVol);
 
   fill(255,40,30,40);
@@ -48,7 +66,7 @@ function draw() {
   circle(600, 500, bassVol * 2);
 
 
-  fill(200,50,200,80);
+  fill(150,20,200,80);
   circle(500,600, trebleVol);
   circle(300,400, midVol);
   circle(100, 200, bassVol);
